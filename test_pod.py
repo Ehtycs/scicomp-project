@@ -129,21 +129,28 @@ red = make_reducer(full_model=full_model,
                    rethrow_exceptions=True)
 
 # Do an initial reduced order model using 2 samples
-res = red.reduce(2)
+# this is very little
+res = red.reduce(4)
 
 # Improve the model iteratively
+# by finding the maximum of the error function
 for i in range(0,100):
     red.improve(res)
     if res.error < 1e-9:
         break
 else:
-    print("Error didn't converge to required tolerance.")
+    print("The error didn't converge to required tolerance.")
     print("This happens if poddim is too small or podtol "
-          "is too big (ahh, heuristics!)")
+          "is too big or too small amount of samples")
     print("Remainder error is {}".format(res.error))
     
 # Plot the singular values of the system
-plt.plot(res.ss)
+plt.plot(np.arange(1,res.ss.shape[0]+1), res.ss)
+plt.title('Magnitude of singular values')
+plt.xlabel("Index of $\sigma$")
+plt.ylabel("Magnitude of $\sigma$")
+plt.xticks(np.arange(1,res.ss.shape[0]+1))
+plt.show()
 
 print("Original dimension {}, reduced dimension {}".format(res.psi.shape[0],
                                                            res.psi.shape[1]))

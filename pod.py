@@ -60,27 +60,10 @@ def boundary_basis_sampling(limits):
     ub,lb = np.array(limits).T
     return (1-eve)*ub + eve*lb
 
-
-#def calc_pset_dimensions(parameters):
-#    """ Calculate the dimension and the amount of elements in the 
-#    discrete parameter space
-#    """
-#    dim = len(parameters)
-#    nelems = reduce(mul, (len(p) for p in parameters))
-#    return (dim, nelems)
-
 def check_null(val, msg):
     if val is None:
        raise ValueError(msg)
        
-#class ParameterSpace(object):
-#    
-#    def __init__(self, psubs):
-#        self.psubspaces = psubs
-#       
-#    def _buildSampleGenerator(self, psubs):
-#        pass
-
        
 class ReductionResult(object):
     """ Stores the reduction result so that it can be refined. """
@@ -265,7 +248,6 @@ class PodReducer(object):
         # Shamefully mutate the input value
         red_result_mut.psi = psi
         red_result_mut.ss = ss
-        #red_result_mut.snapshots = snaps
         red_result_mut.error = -res.fun 
         red_result_mut.last_pconf = res.x
     

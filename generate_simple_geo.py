@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+"""
+    Generates a 2D finite element domain to be meshed with GMSH (a geo file).
+    This script generates a cross section of a simple coil.
+"""
+
 import pygmsh
 import numpy as np
 from itertools import chain
