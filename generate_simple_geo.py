@@ -4,6 +4,12 @@
 """
     Generates a 2D finite element domain to be meshed with GMSH (a geo file).
     This script generates a cross section of a simple coil.
+    
+    Uses a library called pygmsh:
+    https://pypi.org/project/pygmsh/
+    
+    If GMSH is installed this will open the created domain with it 
+    (at least in linux).
 """
 
 import pygmsh
